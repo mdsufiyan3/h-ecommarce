@@ -1,0 +1,872 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #131212;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(20, 18, 18);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 40px;
+}
+
+.logo-image {
+    height: 100%;
+    width: auto;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-icon {
+    color: #333;
+    font-size: 1.2rem;
+    text-decoration: none;
+    position: relative;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    display: none;
+}
+
+.product-card-large {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    width: 98%;  /* Increased from 90% */
+    max-width: 1200px;  /* Increased from 800px */
+    margin: 20px auto;
+    overflow: hidden;
+    color: #fff;
+}
+
+.product-image {
+    flex: 1;
+    position: relative;
+    min-height: 600px;  /* Increased from 400px */
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4444;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.product-info {
+    flex: 1;
+    padding: 50px;  /* Increased from 30px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-title {
+    font-size: 2.5em;  /* Increased from 2em */
+    margin-bottom: 10px;  /* Added margin */
+    color: #fff;
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.edit-icon {
+    background: none;
+    border: none;
+    color: #2196F3;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.edit-icon:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+    transform: scale(1.1);
+}
+
+/* Remove .product-description styles */
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.product-price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.product-rating {
+    color: #ffd700;
+}
+
+.product-rating span {
+    color: #999;
+    margin-left: 5px;
+}
+
+.view-details-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+}
+
+.view-details-btn:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+.view-details-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
+}
+
+.view-details-btn i {
+    font-size: 1.2em;
+}
+
+.stock-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.stock-status i {
+    font-size: 1em;
+}
+
+.stock-status.out-of-stock {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.stock-status.low-stock {
+    background-color: rgba(255, 152, 0, 0.1);
+    color: #ff9800;
+}
+
+.size-selector {
+    margin-bottom: 25px;
+}
+
+.size-selector h3 {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+}
+
+.size-options {
+    display: flex;
+    gap: 12px;
+}
+
+.size-btn {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.size-btn:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.size-btn.selected {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+.size-btn.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.3);
+}
+
+.size-btn.locked::before {
+    content: 'SOLD';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7em;
+    color: #ff4444;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+.size-btn.locked span {
+    opacity: 0.3;
+}
+
+.size-btn.locked:hover {
+    transform: none;
+    border-color: rgba(255, 0, 0, 0.3);
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.view-details-btn, .edit-btn {
+    flex: 1;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.edit-btn {
+    display: none;
+}
+
+/* Update the edit overlay styles */
+.edit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-overlay.active {
+    display: flex;
+}
+
+.edit-content {
+    background: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.edit-overlay.active .edit-content {
+    transform: translateY(0);
+}
+
+.edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.edit-header h2 {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.close-overlay {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-overlay:hover {
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #999;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+}
+
+.edit-size-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.edit-size-options label {
+    min-width: 80px;
+    padding: 12px 20px;
+    background-color: rgba(33, 150, 243, 0.2);
+    border: 2px solid #2196F3;
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-size-options input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2196F3;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.edit-size-options label.locked {
+    opacity: 0.8;
+    cursor: not-allowed;
+    background-color: rgba(33, 150, 243, 0.3);
+}
+
+.edit-size-options label.locked input[type="checkbox"] {
+    cursor: not-allowed;
+}
+
+/* Remove hover effects since they're always selected */
+.edit-size-options label:hover {
+    transform: none;
+}
+
+/* Update form group styling for size section */
+.form-group:has(.edit-size-options) {
+    margin-bottom: 30px;
+}
+
+.form-group:has(.edit-size-options) label {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.edit-actions {
+    margin-top: 30px;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+    background-color: #1976D2;
+}
+
+@media (max-width: 768px) {
+    .product-card-large {
+        flex-direction: column;
+    }
+
+    .product-image {
+        min-height: 450px;  /* Increased from 300px */
+    }
+
+    .product-info {
+        padding: 30px;  /* Keep mobile padding smaller */
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+/* ...existing code... */
+
+.edit-size-options label.clickable {
+    cursor: pointer;
+    background-color: #2a2a2a;
+    border-color: #444;
+}
+
+.edit-size-options label.clickable:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+    border-color: #2196F3;
+}
+
+.edit-size-options label.clickable.selected {
+    background-color: rgba(33, 150, 243, 0.2);
+    border-color: #2196F3;
+}
+
+.edit-size-options label.locked {
+    background-color: rgba(33, 150, 243, 0.2);
+    border-color: #2196F3;
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.edit-size-options label.locked input[type="checkbox"] {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* ...existing code... */
+
+/* Add these styles for success and error messages */
+.success-message,
+.error-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    animation: slideDown 0.3s ease-out;
+    z-index: 1000;
+}
+
+.success-message {
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+}
+
+.error-message {
+    background: rgba(244, 67, 54, 0.9);
+    color: white;
+}
+
+.success-message i,
+.error-message i {
+    margin-right: 8px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Add styles for the loading state */
+.save-btn.loading {
+    background: #1976D2;
+    pointer-events: none;
+}
+
+.save-btn.loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ...existing code... */
+
+/* Add Dashboard Layout Styles */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #131212;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Remove all sidebar-related styles */
+
+/* Update responsive styles */
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* ...rest of existing code... */
+
+/* Add these styles for the details overlay */
+
+.details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1200;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.details-overlay.active {
+    opacity: 1;
+}
+
+.details-content {
+    background: #1e1e1e;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 15px;
+    padding: 25px;
+    color: #fff;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.details-overlay.active .details-content {
+    transform: translateY(0);
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.details-header h2 {
+    font-size: 1.8em;
+    color: #fff;
+}
+
+.close-details {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.close-details:hover {
+    color: #fff;
+}
+
+.details-body {
+    display: flex;
+    gap: 30px;
+}
+
+.details-body img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.details-info {
+    flex: 1;
+}
+
+.details-info h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.details-price {
+    font-size: 1.5em;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.details-stock {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.details-sizes {
+    margin-top: 20px;
+}
+
+.details-sizes h4 {
+    margin-bottom: 10px;
+    color: #999;
+}
+
+.size-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-tag {
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+}
+
+.size-tag.available {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.size-tag.unavailable {
+    background: rgba(244, 67, 54, 0.1);
+    border-color: #f44336;
+    color: #f44336;
+    text-decoration: line-through;
+}
+
+@media (max-width: 768px) {
+    .details-body {
+        flex-direction: column;
+    }
+
+    .details-body img {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* ...existing code... */
+
+/* Message Styles */
+.message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 2000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.message.show {
+    transform: translateX(0);
+}
+
+.success-message {
+    background: #4CAF50;
+    color: white;
+}
+
+.error-message {
+    background: #f44336;
+    color: white;
+}
+
+.message i {
+    font-size: 1.2rem;
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(120%);
+    }
+}
+
+/* ...existing code... */
+
+/* Add these size selector styles */
+.size-selector {
+    margin: 20px 0;
+}
+
+.size-selector h3 {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+}
+
+.size-options {
+    display: flex;
+    gap: 12px;
+}
+
+.size-btn {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.size-btn:hover {
+    border-color: #2196F3;
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.size-btn.available {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.size-btn.unavailable {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #f44336;
+    color: #f44336;
+    text-decoration: line-through;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .size-options {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .size-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9em;
+    }
+}

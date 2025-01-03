@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Dashboard - Adult Hoodies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/winter dashbord html and js&css fils/css/W dashbordpd10.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <main class="main-content">
+            <div class="products-grid">
+                <div class="product-card-large" data-product-id="10"> <!-- Changed from 1 to 10 -->
+                    <div class="product-image">
+                        <img src="image/27e8d66c924747a28615155a9bd16466.webp" alt="Adult Hoodies">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h2 class="product-title">Adult Hoodies</h2>
+                            <button class="edit-icon">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                        <div class="product-meta">
+                            <span class="product-price">₹1499</span>
+                            <div class="stock-status">
+                                <i class="fas fa-check-circle"></i>
+                                <span>In Stock</span>
+                            </div>
+                        </div>
+                        <div class="size-selector">
+                            <h3>Available Sizes</h3>
+                            <div class="size-options">
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button class="view-details-btn">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="edit-overlay" id="editOverlay">
+        <div class="edit-content">
+            <div class="edit-header">
+                <h2>Edit Product</h2>
+                <button class="close-overlay" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editProductForm">
+                <div class="form-group">
+                    <label for="editName">Product Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editStockStatus">Stock Status</label>
+                    <select id="editStockStatus">
+                        <option value="in-stock">In Stock</option>
+                        <option value="low-stock">Low Stock</option>
+                        <option value="out-of-stock">Out of Stock</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Available Sizes</label>
+                    <div class="edit-size-options">
+                        <label class="size-checkbox">
+                            <input type="checkbox" value="M"> M
+                        </label>
+                        <label class="size-checkbox">
+                            <input type="checkbox" value="L"> L
+                        </label>
+                        <label class="size-checkbox">
+                            <input type="checkbox" value="XL"> XL
+                        </label>
+                    </div>
+                </div>
+                <div class="edit-actions">
+                    <button type="submit" class="save-btn">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/js/product-sync.js"></script>
+    <script type="module" src="/winter dashbord html and js&css fils/js/W dashbordpd10.js"></script>
+</body>
+</html>
